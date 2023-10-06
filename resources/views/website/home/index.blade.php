@@ -509,7 +509,7 @@
 </section>
 
 
-<section class="special-offer section">
+{{-- <section class="special-offer section">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -685,7 +685,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 
 <section class="home-product-list section">
