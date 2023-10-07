@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('title')
-    Category-Manage
+    Sub Category-Manage
 @endsection
 
 @section('content')
@@ -15,30 +15,30 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    <h4 class="card-title">Category Manage</h4>
+                    <h4 class="card-title">Sub Category Manage</h4>
                     <div class="table-responsive m-t-40">
                         <table id="myTable" class="table table-striped border">
                             <thead>
                                 <tr>
                                     <th>SL</th>
+                                    <th>SubCategory Name</th>
                                     <th>Category Name</th>
-                                    <th>Category Description</th>
-                                    <th>Category Image</th>
+                                    <th>SubCategory Image</th>
                                     <th>Publication Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($categories as $category)
+                            @foreach ($subCategories as $subCategory)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$category->name}}</td>
-                                <td>{{$category->description}}</td>
-                                <td><img src="{{asset($category->image)}}" alt="" height="70" width="70"></td>
-                                <td>{{$category->status == 1 ? 'Published':'Unpublished'}}</td>
+                                <td>{{$subCategory->name}}</td>
+                                <td>{{$subCategory->category->name}}</td>
+                                <td><img src="{{asset($subCategory->image)}}" alt="" height="70" width="70"></td>
+                                <td>{{$subCategory->status == 1 ? 'Published':'Unpublished'}}</td>
                                 <td>
-                                    <a href="{{route('category.edit',$category->id)}}" class="btn btn-sm btn-success"><i class="ti-pencil"></i></a>
-                                    <a href="{{route('category.destroy',$category->id)}}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure Delete This?')"><i class="ti-trash"></i></a>
+                                    <a href="{{route('sub.category.edit',$subCategory->id)}}" class="btn btn-sm btn-success"><i class="ti-pencil"></i></a>
+                                    <a href="{{route('sub.category.destroy',$subCategory->id)}}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure Delete This?')"><i class="ti-trash"></i></a>
                                 </td>
                             </tr>
                             @endforeach
