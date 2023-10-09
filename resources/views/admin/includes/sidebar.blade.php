@@ -29,8 +29,8 @@
                     <span class="hide-menu">Brand Module 
                         </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="ui-cards.html">Add Brand</a></li>
-                        <li><a href="ui-user-card.html">Manage Brand</a></li>
+                        <li><a href="{{route('brand.create')}}">Add Brand</a></li>
+                        <li><a href="{{route('brand.index')}}">Manage Brand</a></li>
                         
                     </ul>
                 </li>
@@ -38,16 +38,16 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                     <i class="ti-layout-media-right-alt"></i><span class="hide-menu">Unit Module</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="form-basic.html">Add Unit</a></li>
-                        <li><a href="form-layout.html">Manage Unit</a></li>
+                        <li><a href="{{route('unit.create')}}">Add Unit</a></li>
+                        <li><a href="{{route('unit.index')}}">Manage Unit</a></li>
                         
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                     <i class="ti-layout-accordion-merged"></i><span class="hide-menu">Product Module</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="table-basic.html">Add Product</a></li>
-                        <li><a href="table-layout.html">Manage Product</a></li>
+                        <li><a href="{{route('product.create')}}">Add Product</a></li>
+                        <li><a href="{{route('product.index')}}">Manage Product</a></li>
                         
                     </ul>
                 </li>

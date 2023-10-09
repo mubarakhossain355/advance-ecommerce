@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('/')}}admin/assets/images/favicon.png">
-    <title>Khilji Shop Admin Template - @yield('title')</title>
+    <title>Khilji Shop Admin - @yield('title')</title>
     <!-- This page CSS -->
     @include('admin.includes.style')
     

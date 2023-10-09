@@ -8,17 +8,58 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','description','image','status'];
 
-    public static function createOrUpdateCategory($request,$id=null){
+    protected $fillable =['name','description','image','status'];
+
+    private static $category,$image,$imageName,$directory,$imageUrl;
+
+    public static function getImageUrl($request){
+        self::$image                =   $request->file('image');
+        self::$imageName            =   rand(10,10000).time().self::$image->getClientOriginalName();
+        self::$directory            =   'admin/upload-files/category-images/';
+        self::$image->move(self::$directory,self::$imageName);
+        self::$imageUrl             =   self::$directory.self::$imageName;
+
+        return self::$imageUrl;
+    }
+
+    public static function createNewCategory($request){
+        self::$category                    =   new Category();
+        self::$category->name              =   $request->name;
+        self::$category->description       =   $request->description;
+        self::$category->image             =   self::getImageUrl($request);
+        self::$category->status            =   $request->status;
+        self::$category->save();
+    }
+
+    public static function updatedCategory($request,$id){
+        self::$category                    =   Category::find($id);
         
-        Category::updateOrCreate(['id' => $id],[
-                'name' => $request->name,
-                'description' => $request->description,
-                'image' => fileUpload($request->file('image'),'category-images',isset($id)? Category::find($id)->image:null),
-                'status' => $request->status,
+        if($request->file('image')){
+            if(file_exists(self::$category->image)){
+                unlink(self::$category->image);
+            }
+            self::$imageUrl             =   self::getImageUrl($request);
+        }else{
+            self::$imageUrl             =   self::$category->image;
+        }
 
-        ]);
+        self::$category->name              =   $request->name;
+        self::$category->description       =   $request->description;
+        self::$category->image             =   self::$imageUrl;
+        self::$category->status            =   $request->status;
+        self::$category->save();
+        
+
+    }
+
+    public static function deletedCategory($id){
+        self::$category                    =   Category::find($id);
+        if(file_exists(self::$category->image)){
+            unlink(self::$category->image);
+        }
+
+        self::$category->delete();
     }
 
 }

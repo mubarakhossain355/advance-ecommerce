@@ -9,20 +9,20 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(){
-        
-        
-        return view('admin.category.index',['categories' =>Category::all()]);
+        return view('admin.category.index',[
+            'categories'    => Category::all()
+        ]);
     }
+
 
     public function create(){
         return view('admin.category.create');
     }
 
-
     public function store(Request $request){
-        Category::createOrUpdateCategory($request);
+        Category::createNewCategory($request);
 
-        return redirect()->route('category.index')->with('success','Category Added Succesfully');
+        return redirect()->route('category.index')->with('success','Category Added Successfully');
     }
 
     public function edit($id){
@@ -31,19 +31,15 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id){
-        Category::createOrUpdateCategory($request,$id);
+    public function update(Request $request,$id){
+        Category::updatedCategory($request,$id);
 
-        return redirect()->route('category.index')->with('success','Category Updated Succesfully');
+        return redirect()->route('category.index')->with('success','Category Updated Successfully');
     }
 
     public function destroy($id){
-        $category = Category::find($id);
-        if(file_exists($category->image)){
-            unlink($category->image);
-        }
+        Category::deletedCategory($id);
 
-        $category->delete();
-        return back()->with('success','Category Deleted Succesfully');
+        return redirect()->route('category.index')->with('success','Category Deleted Successfully');
     }
 }

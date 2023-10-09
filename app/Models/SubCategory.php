@@ -15,7 +15,7 @@ class SubCategory extends Model
 
     public static function getImageUrl($request){
         self::$image        = $request->file('image');
-        self::$imageName    = self::$image->getClientOriginalName();
+        self::$imageName    = rand(10,10000).time().self::$image->getClientOriginalName();
         self::$directory    = 'admin/upload-files/subCategory-images/';
         self::$image->move(self::$directory,self::$imageName);
         self::$imageUrl     = self::$directory.self::$imageName;
@@ -42,7 +42,7 @@ class SubCategory extends Model
             }
             self::$imageUrl = self::getImageUrl($request);
         }else{
-            self::$imageUrl = self::getImageUrl($request);
+            self::$imageUrl = self::$subcategory->image;
         }
 
         self::$subcategory->category_id     = $request->category_id;

@@ -8,3 +8,4 @@
 <link href="{{asset('/')}}admin/dist/css/pages/dashboard1.css" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('/')}}admin/assets/node_modules/dropify/dist/css/dropify.min.css">
 <link rel="stylesheet" type="text/css" href="{{asset('/')}}admin/assets/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('/')}}admin/assets/node_modules/summernote/dist/summernote-bs4.css">
