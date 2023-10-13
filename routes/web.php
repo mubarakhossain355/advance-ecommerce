@@ -13,10 +13,13 @@ use App\Http\Controllers\UnitController;
 
 // Frontend Routes
 Route::get('/',[MyCommerceController::class,'index'])->name('home');
-Route::get('/product-category',[MyCommerceController::class,'category'])->name('product-category');
-Route::get('/product-detail',[MyCommerceController::class,'detail'])->name('product-detail');
+Route::get('/product-category/{id}',[MyCommerceController::class,'category'])->name('product-category');
+Route::get('/product-detail/{id}',[MyCommerceController::class,'detail'])->name('product-detail');
 // Cart
-Route::get('/add-to-cart',[CartController::class,'index'])->name('show-cart');
+Route::get('/show-cart',[CartController::class,'show'])->name('show-cart');
+Route::post('/add-to-cart/{id}',[CartController::class,'index'])->name('add-to-cart');
+Route::get('/remove-cart-product/{id}',[CartController::class,'remove'])->name('remove-cart-product');
+Route::post('/update-cart-product/{id}',[CartController::class,'update'])->name('update-cart-product');
 // Checkout
 Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout');
 

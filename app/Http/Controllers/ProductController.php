@@ -74,7 +74,7 @@ class ProductController extends Controller
 
     public function destroy($id){
         Product::deletedProduct($id);
-
+        OtherImage::deleteOtherImage($id);
         return redirect()->route('product.index')->with('success','Product Deleted Successfully');
     }
 }

@@ -158,8 +158,9 @@ return [
     'providers' => ServiceProvider::defaultProviders()->merge([
         /*
          * Package Service Providers...
+         * 
          */
-
+        Overtrue\LaravelShoppingCart\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -185,6 +186,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'ShoppingCart'      => Overtrue\LaravelShoppingCart\Facade::class,
     ])->toArray(),
 
 ];
