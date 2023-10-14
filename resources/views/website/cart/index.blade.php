@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
-                        <li><a href="index.html"><i class="lni lni-home"></i> Home</a></li>
+                        <li><a href="{{route('home')}}"><i class="lni lni-home"></i> Home</a></li>
                         <li><a href="index.html">Shop</a></li>
                         <li>Cart</li>
                     </ul>
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-
+                @php($sum = 0)
                 @foreach ($cart_products as $cart_product)
                 <div class="cart-single-list">
                     <div class="row align-items-center">
@@ -95,6 +95,7 @@
                         </div>
                     </div>
                 </div>
+                @php($sum =+ $sum+$cart_product->price*$cart_product->qty)
                 @endforeach
                     
 
@@ -119,10 +120,10 @@
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="right">
                                     <ul>
-                                        <li>Cart Subtotal<span>$2560.00</span></li>
-                                        <li>Shipping<span>Free</span></li>
-                                        <li>You Save<span>$29.00</span></li>
-                                        <li class="last">You Pay<span>$2531.00</span></li>
+                                        <li>Cart Subtotal<span>TK {{$sum}}</span></li>
+                                        <li>Tax (15%)<span>TK {{$tax = ($sum*15)/100}}</span></li>
+                                        <li>Shipping<span>TK {{$shipping = 100}}</span></li>
+                                        <li class="last">Total Payable<span>TK {{$total_payable = $sum+$tax+$shipping}}</span></li>
                                     </ul>
                                     <div class="button">
                                         <a href="{{ route('checkout') }}" class="btn">Checkout</a>
