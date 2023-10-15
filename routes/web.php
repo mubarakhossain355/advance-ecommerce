@@ -22,6 +22,8 @@ Route::get('/remove-cart-product/{id}',[CartController::class,'remove'])->name('
 Route::post('/update-cart-product/{id}',[CartController::class,'update'])->name('update-cart-product');
 // Checkout
 Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout');
+Route::post('/new-cash-order',[CheckoutController::class,'newCashOrder'])->name('new-cash-order');
+Route::get('/complete-order',[CheckoutController::class,'completeOrder'])->name('complete-order');
 
 
 // Backend Routes

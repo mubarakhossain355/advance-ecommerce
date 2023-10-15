@@ -36,6 +36,8 @@
                        </ul>
                        <div class="tab-content">
                             <div class="tab-pane fade show active" id="cash">
+                              <form action="{{route('new-cash-order')}}" method="POST">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="single-form form-default">
@@ -68,12 +70,21 @@
                                         <div class="single-form form-default">
                                             <label>Delivery Address</label>
                                             <div class="form-input form">
-                                                <textarea placeholder="Order Delivery Address" name="delivery_address"></textarea>
+                                                <textarea placeholder="Order Delivery Address" style="padding-top: 10px;height:80px" name="delivery_address"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    
+                                    <div class="col-md-12">
+                                        <div class="single-form form-default">
+                                            <label>Payment Type</label>
+                                            <div>
+                                                <label><input type="radio" name="payment_type" value="1" checked>Cash On Delivery</label>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-12">
                                         <div class="single-checkbox checkbox-style-3">
                                             <input type="checkbox" id="checkbox-3" checked>
@@ -87,6 +98,7 @@
                                         </div>
                                     </div>
                                 </div>
+                              </form>
                             </div>
                             <div class="tab-pane fade show" id="online">
                                 <h2>Online Payment</h2>
@@ -117,9 +129,33 @@
                             </div>
                             <div class="total-payable">
                                 <div class="payable-price">
-                                    <p class="value">Total Payable:</p>
+                                    <p class="value">Subtotal Price:</p>
                                     <p class="price">TK {{$cart_total}}</p>
                                 </div>
+                            </div>
+                            <div class="total-payable">
+                                <div class="payable-price">
+                                    <p class="value">Tax(15%):</p>
+                                    <p class="price">TK {{$tax = round((($cart_total*15)/100))}}</p>
+                                </div>
+                            </div>
+                            <div class="total-payable">
+                                <div class="payable-price">
+                                    <p class="value">Shipping Cost:</p>
+                                    <p class="price">TK {{ $shipping = 100}}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="total-payable">
+                                <div class="payable-price">
+                                    <p class="value">Total Payable:</p>
+                                    <p class="price">TK {{$orderTotal = ($cart_total + $tax + $shipping)}}</p>
+                                </div>
+                                <?php
+                                    Session::put('order_total',$orderTotal);
+                                    Session::put('tax_total',$tax);
+                                    Session::put('shipping_total',$shipping);
+                                ?>
                             </div>
                             <div class="price-table-btn button">
                                 <a href="javascript:void(0)" class="btn btn-alt">Checkout</a>
