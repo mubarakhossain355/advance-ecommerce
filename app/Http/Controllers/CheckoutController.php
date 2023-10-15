@@ -26,6 +26,8 @@ class CheckoutController extends Controller
        $this->customer->mobile              = $request->mobile;
        $this->customer->password            = bcrypt($request->mobile);
        $this->customer->save();
+       Session::put('customer_id', $this->customer->id);
+       Session::put('customer_name', $this->customer->name);
 
        $this->order = new Order();
        $this->order->customer_id            = $this->customer->id;
@@ -47,7 +49,7 @@ class CheckoutController extends Controller
         $this->orderDetail->product_price       = $item->price;
         $this->orderDetail->product_qty         = $item->qty;
         $this->orderDetail->save();
-
+        ShoppingCart::remove($item->__raw_id);
        }
 
        return redirect('/complete-order')->with('message','Congratulations .... your order post successfully');
