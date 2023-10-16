@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\CustomerOrderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyCommerceController;
 use App\Http\Controllers\ProductController;
@@ -31,6 +32,8 @@ Route::post('/customer/login',[CustomerAuthController::class,'login'])->name('cu
 Route::post('/customer/register',[CustomerAuthController::class,'register'])->name('customer.register');
 Route::get('/customer/logout',[CustomerAuthController::class,'logout'])->name('customer.logout');
 Route::get('/customer-dashboard',[CustomerAuthController::class,'dashboard'])->name('customer.dashboard');
+Route::get('/customer-profile',[CustomerAuthController::class,'profile'])->name('customer.profile');
+Route::get('/customer-order',[CustomerOrderController::class,'allOrder'])->name('customer.order');
 
 
 // Backend Routes

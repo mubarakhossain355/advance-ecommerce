@@ -1,7 +1,7 @@
 @extends('website.master')
 
 @section('title')
-    Customer Dashboard
+    Customer Prfile
 @endsection
 
 @section('content')
@@ -10,14 +10,14 @@
         <div class="row align-items-center">
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="breadcrumbs-content">
-                    <h1 class="page-title">Customer Dashboard</h1>
+                    <h1 class="page-title">Customer Prfile</h1>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
                 <ul class="breadcrumb-nav">
                     <li><a href="{{route('home')}}"><i class="lni lni-home"></i> Home</a></li>
                     <li><a href="">Shop</a></li>
-                    <li>Customer Dashboard</li>
+                    <li>Customer Prfile</li>
                 </ul>
             </div>
         </div>
@@ -44,7 +44,7 @@
            </div>
            <div class="col-md-9">
             <div class="card card-body">
-                <h2>My Dashboard ....</h2>
+                <h2>My Profile ....</h2>
             </div>
            </div>
         </div>

@@ -48,6 +48,10 @@ class CustomerAuthController extends Controller
         return view('customer.dashboard');
     }
 
+    public function profile(){
+        return view('customer.profile');
+    }
+
     public function logout()
     {
         Session::forget('customer_id');

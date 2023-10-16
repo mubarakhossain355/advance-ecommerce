@@ -1,7 +1,7 @@
 @extends('website.master')
 
 @section('title')
-    Customer Dashboard
+    Customer All Order
 @endsection
 
 @section('content')
@@ -10,14 +10,14 @@
         <div class="row align-items-center">
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="breadcrumbs-content">
-                    <h1 class="page-title">Customer Dashboard</h1>
+                    <h1 class="page-title">Customer All Order</h1>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
                 <ul class="breadcrumb-nav">
                     <li><a href="{{route('home')}}"><i class="lni lni-home"></i> Home</a></li>
                     <li><a href="">Shop</a></li>
-                    <li>Customer Dashboard</li>
+                    <li>Customer All Order</li>
                 </ul>
             </div>
         </div>
@@ -44,7 +44,35 @@
            </div>
            <div class="col-md-9">
             <div class="card card-body">
-                <h2>My Dashboard ....</h2>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>SL NO</th>
+                            <th>Order NO</th>
+                            <th>Order Date</th>
+                            <th>Order Total</th>
+                            <th>Order Status</th>
+                            <th>Delivery Address</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($orders as $order)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$order->id}}</td>
+                            <td>{{$order->order_date}}</td>
+                            <td>{{$order->order_total}}</td>
+                            <td>{{$order->order_status}}</td>
+                            <td>{{$order->delivery_address}}</td>
+                            <td>
+                                <a href="" class="btn btn-success">Details</a>
+                            </td>
+                        </tr> 
+                        @endforeach
+                        
+                    </tbody>
+                </table>
             </div>
            </div>
         </div>
