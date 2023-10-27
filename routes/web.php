@@ -107,4 +107,6 @@ Route::middleware([
     Route::get('/admin/order/detail/{id}',[AdminOrderController::class,'detail'])->name('admin.order.detail');
     Route::get('/admin/order/edit/{id}',[AdminOrderController::class,'edit'])->name('admin.order.edit');
     Route::post('/admin/order/update/{id}',[AdminOrderController::class,'update'])->name('admin.order.update');
+    Route::get('/admin/order/invoice/{id}',[AdminOrderController::class,'invoice'])->name('admin.order.invoice');
+    Route::get('/admin/order/printInvoice/{id}',[AdminOrderController::class,'printInvoice'])->name('admin.order.printInvoice');
 });

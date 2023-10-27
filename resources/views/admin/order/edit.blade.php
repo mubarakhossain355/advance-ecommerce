@@ -21,6 +21,12 @@
                     <form action="{{route('admin.order.update',['id' => $order->id])}}" method="POST">
                         @csrf
                         <div class="row mb-3">
+                            <label class="col-md-3">Customer Info</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  value="{{$order->customer->name.'('.$order->customer->mobile.')'}}" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
                             <label class="col-md-3">Order ID</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control"  value="{{$order->id}}" readonly>
@@ -37,10 +43,10 @@
                             <div class="col-md-9">
                                 
                                 <select name="order_status" class="form-control">
-                                    <option value="Pending">Pending</option>
-                                    <option value="Processing">Processing</option>
-                                    <option value="Complete">Complete</option>
-                                    <option value="Cancel">Cancel</option>
+                                    <option value="Pending" {{$order->order_status == 'Pending' ? 'selected' : ''}} >Pending</option>
+                                    <option value="Processing" {{$order->order_status == 'Processing' ? 'selected' : ''}}>Processing</option>
+                                    <option value="Complete" {{$order->order_status == 'Complete' ? 'selected' : ''}}>Complete</option>
+                                    <option value="Cancel" {{$order->order_status == 'Cancel' ? 'selected' : ''}}>Cancel</option>
                                 </select>
                             </div>
                         </div>

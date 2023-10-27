@@ -43,8 +43,8 @@
                                 <td>
                                     <a href="{{route('admin.order.detail',['id' => $order->id])}}" class="btn btn-sm btn-info" title="View Order Detail"><i class="ti-book"></i></a>
                                     <a href="{{route('admin.order.edit',['id' => $order->id])}}" class="btn btn-sm btn-success" title="Order Edit"><i class="ti-pencil"></i></a>
-                                    <a href="" class="btn btn-sm btn-primary" title="View Order Invoice"><i class="ti-infinite"></i></a>
-                                    <a href="" class="btn btn-sm btn-warning" title="Print Order Invoice"><i class="ti-dropbox"></i></a>
+                                    <a href="{{route('admin.order.invoice',['id' => $order->id])}}" class="btn btn-sm btn-primary" title="View Order Invoice"><i class="ti-infinite"></i></a>
+                                    <a href="{{route('admin.order.printInvoice',['id' => $order->id])}}" target="_blank" class="btn btn-sm btn-warning" title="Print Order Invoice"><i class="ti-dropbox"></i></a>
                                     <a href="" class="btn btn-sm btn-danger" title="Delete Order" onclick="return confirm('Are you sure Delete This?')"><i class="ti-trash"></i></a>
                                 </td>
                                

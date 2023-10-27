@@ -24,5 +24,10 @@ class OrderDetail extends Model
         self::$orderDetail->save();
         ShoppingCart::remove($item->__raw_id);
        }
+
+       
     }
+
+    
+
 }
